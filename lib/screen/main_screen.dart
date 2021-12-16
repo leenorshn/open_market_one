@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:open_market_one/pages/category.dart';
 import 'package:open_market_one/pages/products_page.dart';
+import 'package:open_market_one/screen/payment_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -18,12 +19,6 @@ class _MainScreenState extends State<MainScreen> {
     _controller = PageController(initialPage: page);
     super.initState();
   }
-
-  // onPageChanged(int p) {
-  //   setState(() {
-  //     page = p;
-  //   });
-  // }
 
   onPageChanged(int p) {
     setState(() {
@@ -58,6 +53,16 @@ class _MainScreenState extends State<MainScreen> {
             color: Colors.red,
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const PaymentScreen(),
+            ),
+          );
+        },
+        child: const Icon(CupertinoIcons.bitcoin),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: page,
